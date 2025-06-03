@@ -17,7 +17,7 @@ return new class extends Migration
                 ->unique();
             $table->string('email', 255)
                 ->unique();
-            $table->string('password', 50);
+            $table->string('password', 255);
             $table->enum('role', ['Admin', 'Konsumen', 'Petani']);
             $table->boolean('status')
                 ->default(true);
