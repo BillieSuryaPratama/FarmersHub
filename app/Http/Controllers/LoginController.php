@@ -9,13 +9,11 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
-    // Tampilkan form login
     public function showLogin()
     {
         return view('auth.login');
     }
 
-    // Proses login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -26,10 +24,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Ambil user yang login
             $user = Auth::user();
 
-            // Arahkan sesuai role
             switch ($user->role) {
                 case 'Admin':
                     return redirect()->intended('/admin/dashboard');
@@ -38,7 +34,7 @@ class LoginController extends Controller
                 case 'Konsumen':
                     return redirect()->intended('/konsumen/dashboard');
                 default:
-                    Auth::logout(); // kalau role tidak dikenal, logout
+                    Auth::logout();
                     return redirect('/login')->withErrors(['role' => 'Role tidak dikenali.']);
             }
         }

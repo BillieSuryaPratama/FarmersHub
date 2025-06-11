@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Dashboard Petani | FarmersHub')</title>
 
-    <!-- CSS & Font -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
@@ -40,7 +39,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <!-- Left Menu -->
+                <!-- Menu Kiri-->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('produk.index') ? 'active' : '' }}" href="{{ route('produk.index') }}">
@@ -49,7 +48,7 @@
                     </li>
                 </ul>
 
-                <!-- Right Menu -->
+                <!-- Menu Kanan-->
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -73,12 +72,10 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="container-fluid">
         <div class="row">
             <main class="col-12 col-md-10 offset-md-1 main-content">
 
-                <!-- Flash Messages -->
                 @if(session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <i class="fas fa-check-circle"></i> {{ session('success') }}
@@ -119,10 +116,8 @@
         </div>
     </footer>
 
-    <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Auto-dismiss Alert -->
     <script>
         setTimeout(() => {
             document.querySelectorAll('.alert').forEach(alert => {

@@ -9,23 +9,18 @@ use Illuminate\Support\Facades\Storage;
 
 class ManajemenProdukController extends Controller
 {
-    // Menampilkan semua produk milik user yang login (petani)
     public function index()
     {
-        // Ambil semua produk tanpa memfilter user_id
         $produk = Produk::all();
 
         return view('produk.index', compact('produk'));
     }
 
-
-    // Menampilkan form tambah produk
     public function create()
     {
         return view('produk.create');
     }
 
-    // Menyimpan produk baru
     public function store(Request $request)
     {
         $request->validate([
@@ -50,14 +45,12 @@ class ManajemenProdukController extends Controller
         return redirect()->route('produk.index')->with('success', 'Produk berhasil ditambahkan.');
     }
 
-    // Menampilkan form edit produk
     public function edit($id)
     {
         $produk = Produk::where('user_id', Auth::id())->findOrFail($id);
         return view('produk.edit', compact('produk'));
     }
 
-    // Memperbarui produk
     public function update(Request $request, $id)
     {
         $produk = Produk::where('user_id', Auth::id())->findOrFail($id);
@@ -82,7 +75,6 @@ class ManajemenProdukController extends Controller
         return redirect()->route('produk.index')->with('success', 'Produk berhasil diperbarui.');
     }
 
-    // Menghapus produk
     public function destroy($id)
     {
         $produk = Produk::where('user_id', Auth::id())->findOrFail($id);

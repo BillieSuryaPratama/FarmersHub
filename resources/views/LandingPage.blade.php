@@ -302,7 +302,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="py-20 bg-gray-900">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-4xl font-bold text-white mb-6">Siap Bergabung dengan FarmersHub?</h2>
@@ -371,7 +370,6 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -385,7 +383,6 @@
             });
         });
 
-        // Add animation classes when elements come into view
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -399,7 +396,6 @@
             });
         }, observerOptions);
 
-        // Observe elements for animation
         document.querySelectorAll('.card-hover').forEach(el => {
             observer.observe(el);
         });

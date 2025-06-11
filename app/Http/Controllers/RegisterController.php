@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Akun; // Ganti sesuai model yang kamu pakai
+use App\Models\Akun;
 
 class RegisterController extends Controller
 {
@@ -16,14 +16,14 @@ class RegisterController extends Controller
     {
         $request->validate([
             'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:user,email', // nama tabel = 'user'
+            'email' => 'required|email|unique:user,email',
             'password' => 'required|min:6|confirmed',
         ]);
 
         Akun::create([
             'username' => $request->username,
             'email' => $request->email,
-            'password' => $request->password, // tanpa hash
+            'password' => $request->password,
             'role' => 'konsumen',
             'status' => true,
         ]);
