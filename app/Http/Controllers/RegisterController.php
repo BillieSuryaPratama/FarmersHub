@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Akun; // Ganti sesuai model yang kamu pakai
 
 class RegisterController extends Controller
 {
@@ -17,14 +16,14 @@ class RegisterController extends Controller
     {
         $request->validate([
             'username' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:user,email', // nama tabel = 'user'
             'password' => 'required|min:6|confirmed',
         ]);
 
-        User::create([
+        Akun::create([
             'username' => $request->username,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => $request->password, // tanpa hash
             'role' => 'konsumen',
             'status' => true,
         ]);

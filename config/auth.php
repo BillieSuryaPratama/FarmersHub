@@ -61,8 +61,8 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'driver' => 'plaintext',
+            'model' => App\Models\Akun::class,
         ],
     ],
 

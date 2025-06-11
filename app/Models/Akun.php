@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Akun extends Model
+class Akun extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, Notifiable;
+
     protected $table = 'user';
     protected $primaryKey = 'user_id';
     public $timestamps = true;
+
     protected $fillable = [
         'username',
         'email',
@@ -19,19 +22,28 @@ class Akun extends Model
         'status',
     ];
 
-    public function Keranjang(){
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    public function keranjang()
+    {
         return $this->hasOne(Keranjang::class, 'user_id');
     }
 
-    public function PermohonanUpgrade(){
+    public function permohonanUpgrade()
+    {
         return $this->hasMany(PermohonanUpgrade::class, 'user_id');
     }
 
-    public function Produk(){
+    public function produk()
+    {
         return $this->hasMany(Produk::class, 'user_id');
     }
 
-    public function Transaksi(){
+    public function transaksi()
+    {
         return $this->hasMany(Transaksi::class, 'user_id');
     }
 }
